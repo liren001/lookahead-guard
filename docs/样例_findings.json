@@ -1,0 +1,22 @@
+[
+  {
+    "file": "examples\\c1_centered.py",
+    "line": 16,
+    "col": 9,
+    "rule": "centered-filter1d",
+    "severity": "HIGH",
+    "message": "`minimum_filter1d(...)` 未指定 origin —— scipy 默认 origin=0 即【居中】窗口，窗口覆盖 [t-k, t+k]，含未来数据。",
+    "fix": "改用尾随: `pd.Series(x).rolling(n, min_periods=1).min()`；或 `np.lib.stride_tricks.sliding_window_view`。",
+    "snippet": "mn = minimum_filter1d(close, 20, axis=0, mode=\"nearest\")   # ⛔ 居中，含未来"
+  },
+  {
+    "file": "examples\\c1_centered.py",
+    "line": 17,
+    "col": 9,
+    "rule": "centered-filter1d",
+    "severity": "HIGH",
+    "message": "`maximum_filter1d(...)` 未指定 origin —— scipy 默认 origin=0 即【居中】窗口，窗口覆盖 [t-k, t+k]，含未来数据。",
+    "fix": "改用尾随: `pd.Series(x).rolling(n, min_periods=1).min()`；或 `np.lib.stride_tricks.sliding_window_view`。",
+    "snippet": "mx = maximum_filter1d(close, 20, axis=0, mode=\"nearest\")   # ⛔ 居中，含未来"
+  }
+]
